@@ -1,0 +1,78 @@
+<template>
+
+	<!-- Header -->
+	<div class="slds-modal__header">
+		<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Sort Products</h1>
+	</div>
+	<!-- Body -->
+	<div class="slds-modal__content">
+		<div class="slds-scrollable" style="height:30rem;width:100%" tabindex="0">
+			<table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"
+				aria-labelledby="element-with-table-label other-element-with-table-label">
+				<thead>
+					<tr class="slds-line-height_reset">
+						<th></th>
+						<th class="" scope="col">
+							<div class="slds-truncate">Index</div>
+						</th>
+						<th class="cloumn-width" scope="col">
+							<div class="slds-truncate">Product Name</div>
+						</th>
+						<th class="" scope="col">
+							<div class="slds-truncate">Placement Name</div>
+						</th>
+						<th class="" scope="col">
+							<div class="slds-truncate">Additional Placement Details</div>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<template for:each={ElementList} for:item="opp" for:index="index">
+						<tr key={opp.Id} onchange={Change} draggable="true" ondrop={Drop} ondragstart={DragStart}
+							ondragover={DragOver} ondragleave={DragLeave} ondragenter={DragEnter} ondragend={DragEnd}
+							title={index}>
+							<td role="gridcell" key={opp.Id} onchange={Change} ondrop={Drop} ondragstart={DragStart}
+								ondragover={DragOver} ondragleave={DragLeave} ondragenter={DragEnter}
+								ondragend={DragEnd} title={index}>
+								<div class="slds-button" title={index}>
+									<lightning-icon icon-name="utility:rows"
+										class="slds-icon-utility-rows slds-icon_xx-small" size="xx-small">
+									</lightning-icon>
+								</div>
+							</td>
+							<td role="gridcell" key={opp.Id} onchange={Change}  ondrop={Drop}
+								ondragstart={DragStart} ondragover={DragOver} ondragleave={DragLeave}
+								ondragenter={DragEnter} ondragend={DragEnd} title={index}>
+								{opp.number}
+							</td>
+							<td role="gridcell" key={opp.Id} onchange={Change} d ondrop={Drop}
+								ondragstart={DragStart} ondragover={DragOver} ondragleave={DragLeave}
+								ondragenter={DragEnter} ondragend={DragEnd} title={index}>
+								{opp.record.Product2.Name}
+							</td>
+							<td role="gridcell" key={opp.Id} onchange={Change} ondrop={Drop} ondragstart={DragStart}
+								ondragover={DragOver} ondragleave={DragLeave} ondragenter={DragEnter}
+								ondragend={DragEnd} title={index}>
+								{opp.record.Description}
+							</td>
+							<td role="gridcell" key={opp.Id} onchange={Change} ondrop={Drop} ondragstart={DragStart}
+								ondragover={DragOver} ondragleave={DragLeave} ondragenter={DragEnter}
+								ondragend={DragEnd} title={index}>
+								{opp.record.Additional_Placement_Details__c}
+							</td>
+						</tr>
+					</template>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Footer -->
+		<div class="slds-modal__footer">
+			<lightning-button variant="neutral" label="Cancel" title="Cancel" onclick={CancelRecord}></lightning-button>
+			&nbsp;
+
+			<lightning-button variant="brand" label="Save" title="Save" onclick={SaveRecord}></lightning-button>
+		</div>
+	</div>
+
+</template>
